@@ -10,7 +10,7 @@ from selenium.webdriver.common.by import By
 def test_xueqiu():
     caps = {}
     caps["platformName"] = "Android"
-    caps["deviceName"] = "127.0.0.1:7555"
+    caps["deviceName"] = "a520eefc"
     caps["appPackage"] = "com.xueqiu.android"
     caps["appActivity"] = ".view.WelcomeActivityAlias"
     caps['noReset'] = "true"
@@ -18,6 +18,7 @@ def test_xueqiu():
     driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
     driver.implicitly_wait(15)
     driver.find_element(By.XPATH, "//*[@text='交易']").click()
+    # 切换到webview页面
     webview = driver.contexts[-1]
     driver.switch_to.context(webview)
     performance = driver.execute_script("return window.performance.timing")
@@ -37,11 +38,11 @@ def test_vmstat():
 def test_navigation():
     caps = {}
     caps["platformName"] = "Android"
-    caps["deviceName"] = "127.0.0.1:7555"
+    caps["deviceName"] = "a520eefc"
     caps["appPackage"] = "com.xueqiu.android"
     caps["appActivity"] = ".view.WelcomeActivityAlias"
     caps['noReset'] = "true"
-    caps['chromedriverExecutable'] = "D:/develop/chromedriver/2.20.exe"
+    # caps['chromedriverExecutable'] = "D:/develop/chromedriver/2.20.exe"
     driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
     driver.implicitly_wait(15)
     driver.find_element(By.XPATH, "//*[@text='交易']").click()
@@ -49,6 +50,8 @@ def test_navigation():
     driver.switch_to.context(webview)
     # 查看刚进入页面的操作码：0
     print(driver.execute_script("return window.location.href"))
+    # # 更改当前页面的url
+    # print(driver.execute_script("return window.location.href=https://www.baidu.com"))
 
 
 def test_draw():

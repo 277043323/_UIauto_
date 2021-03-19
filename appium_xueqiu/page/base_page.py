@@ -8,6 +8,7 @@ from appium_xueqiu.page.wrapper import handle_black
 
 
 class BasePage:
+    # 定义一个特殊的字符用于存储name值
     _params = {}
 
     def __init__(self, driver: WebDriver = None):
@@ -52,7 +53,9 @@ class BasePage:
         with open(path, encoding="utf-8") as f:
             name = inspect.stack()[1].function
             steps = yaml.safe_load(f)[name]
+        # 序列化一个列表为字符串格式
         raw = json.dumps(steps)
+        # 替换yaml文件中的{name}
         for key, value in self._params.items():
             raw = raw.replace('${' + key + '}', value)
         steps = json.loads(raw)

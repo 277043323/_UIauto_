@@ -18,6 +18,7 @@ def handle_black(func):
         _max_num = 3
         _error_num = 0
         instance: BasePage = args[0]
+
         try:
             logging.info("run " + func.__name__ + "\n args: \n" + repr(args[1:]) + "\n" + repr(kwargs))
             element = func(*args, **kwargs)

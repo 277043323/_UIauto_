@@ -30,5 +30,6 @@ class App(BasePage):
     def stop(self):
         self._driver.quit()
 
+    # 函数后的箭头是函数注释的一部分,表示函数返回值的类型
     def main(self) -> Main:
         return Main(self._driver)

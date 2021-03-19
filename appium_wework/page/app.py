@@ -31,3 +31,4 @@ class App(BasePage):
 
     def main(self) -> Main:
         return Main(self._driver)
+
